@@ -1,0 +1,16 @@
+t = int(input())
+for _ in range(t):
+   n = int(input())
+   arr = list(map(int,input().split()))
+   ans = [0]*(n)
+   ans[n-1] = 1 
+   i = n-2 
+   while i>=0:
+      if (arr[i]>0 and arr[i+1]<0) or (arr[i]<0 and arr[i+1]>0):
+         ans[i] = ans[i+1]+1 
+      else:
+         ans[i] = 1 
+      i-=1 
+   for item in ans:
+      print(item,end=' ')
+   print()
