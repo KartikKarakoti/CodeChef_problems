@@ -1,0 +1,29 @@
+def solve():
+    n = int(input())
+    ar = []
+    
+    # Read the triangle input
+    for i in range(n):
+        row = list(map(int, input().split()))
+        ar.append(row)
+    
+    # Initialize the dp array
+    dp = [[0] * (n + 1) for _ in range(n + 1)]
+
+    # Fill the last row of dp with values from ar
+    for j in range(n):
+        dp[n - 1][j + 1] = ar[n - 1][j]
+
+    # Fill the dp array from bottom to top
+    for i in range(n - 2, -1, -1):
+        for j in range(i + 1):
+            dp[i][j + 1] = ar[i][j] + max(dp[i + 1][j + 1], dp[i + 1][j + 2])
+
+    # Print the maximum path sum from top to bottom
+    print(dp[0][1])
+
+# Main function to handle multiple test cases
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        solve()
