@@ -1,0 +1,22 @@
+def classify_problem(T, test_cases):
+    results = []
+    for x in test_cases:
+        if 1 <= x < 100:
+            results.append("Easy")
+        elif 100 <= x < 200:
+            results.append("Medium")
+        elif 200 <= x <= 300:
+            results.append("Hard")
+    
+    return "\n".join(results)
+
+# Input reading
+T = int(input())  # Number of test cases
+test_cases = []
+
+for _ in range(T):
+    x = int(input())  # The point value for each test case
+    test_cases.append(x)
+
+# Get the result and print it
+print(classify_problem(T, test_cases))
