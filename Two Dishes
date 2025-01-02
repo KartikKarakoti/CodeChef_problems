@@ -1,0 +1,31 @@
+def can_serve_dishes(T, test_cases):
+    results = []
+    
+    for t in range(T):
+        N, A, B, C = test_cases[t]
+        
+        # Try making as many Type 1 dishes as possible (using fruits and vegetables)
+        for x in range(min(A, B) + 1):  # x is the number of Type 1 dishes
+            # Remaining vegetables after using them for Type 1 dishes
+            remaining_vegetables = B - x
+            # The number of Type 2 dishes we can make with remaining vegetables and fishes
+            y = min(remaining_vegetables, C)  # y is the number of Type 2 dishes
+            
+            if x + y >= N:
+                results.append("YES")
+                break
+        else:
+            results.append("NO")
+    
+    return "\n".join(results)
+
+# Input reading
+T = int(input())  # Number of test cases
+test_cases = []
+
+for _ in range(T):
+    N, A, B, C = map(int, input().split())  # N, A, B, C for each test case
+    test_cases.append((N, A, B, C))
+
+# Get the result and print it
+print(can_serve_dishes(T, test_cases))
