@@ -1,0 +1,27 @@
+def best_movie_rating(T, test_cases):
+    results = []
+    
+    for i in range(T):
+        N, X = test_cases[i][0], test_cases[i][1]
+        max_rating = -1
+        
+        for j in range(N):
+            S, R = test_cases[i][2][j]
+            if S <= X:
+                max_rating = max(max_rating, R)
+        
+        results.append(str(max_rating))
+    
+    return "\n".join(results)
+
+# Input reading and test case processing
+T = int(input())  # Number of test cases
+test_cases = []
+
+for _ in range(T):
+    N, X = map(int, input().split())  # Read N and X for the test case
+    movies = [tuple(map(int, input().split())) for _ in range(N)]  # Read the N movies
+    test_cases.append((N, X, movies))
+
+# Get the result and print it
+print(best_movie_rating(T, test_cases))
