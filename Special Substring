@@ -1,0 +1,19 @@
+# cook your dish here
+from collections import defaultdict
+t = int(input())
+for i in range(t):
+    n = int(input())
+    s = input()
+    i = 0
+    j = 0
+    d = defaultdict(int)
+    max1 = 0
+    while j < n:
+        max1 = max(max1, j-i)
+        d[s[j]] += 1
+        while d[s[j]] > ord(s[j]) - 96:
+            d[s[i]] -= 1
+            i+=1
+        j+=1
+    max1 = max(max1, j-i)
+    print(max1)
