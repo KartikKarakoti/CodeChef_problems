@@ -1,0 +1,22 @@
+def max_subarray_sum(n, k, arr):
+    # Initialize sum with the sum of the first 'k' elements
+    current_sum = sum(arr[:k])
+    max_sum = current_sum
+    left = 0
+    right = k
+
+    # Sliding window to find the maximum sum of any subarray of length 'k'
+    while right < n:
+        current_sum += arr[right] - arr[left]
+        max_sum = max(max_sum, current_sum)
+        left += 1
+        right += 1
+
+    return max_sum
+
+# Read input values
+n, k = map(int, input().split())
+arr = list(map(int, input().split()))
+
+# Call the function and print the result
+print(max_subarray_sum(n, k, arr))
