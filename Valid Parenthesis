@@ -1,0 +1,17 @@
+T = int(input())
+for _ in range(T):
+    S = input()
+    stack = []
+    for b in S:
+        if b == '(':
+            stack.append(b)
+        else:
+            if len(stack) == 0:
+                stack.append(b)
+                break
+            else:
+                stack.pop()
+    if len(stack) > 0:
+        print(0)
+    else:
+        print(1)
