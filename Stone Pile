@@ -1,0 +1,15 @@
+from collections import deque
+
+nrot = [2, 1]
+
+T = int(input())
+for t in range(T):
+    N = int(input())
+    A = deque(map(int,input().split()))
+    player = 0
+    while len(A)>1:
+        player = 1 - player
+        for n in range(nrot[player]):
+            A.append(A.popleft())
+        A.popleft()
+    print(player, A[0])
