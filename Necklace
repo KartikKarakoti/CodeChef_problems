@@ -1,0 +1,16 @@
+from collections import deque
+
+def rotate_necklace(necklace, k):
+    necklace.rotate(-k)
+
+T = int(input())
+for _ in range(T):
+    n, k = map(int, input().split())
+    necklace_values = deque(map(int, input().split()))
+    
+    # Ensure k is within the bounds and rotate the deque
+    k %= n
+    rotate_necklace(necklace_values, k)
+    
+    # Print the new order of pearls
+    print(' '.join(map(str, necklace_values)))
