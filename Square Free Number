@@ -1,0 +1,38 @@
+import math
+
+def main():
+    # Input the number 'n'
+    n = int(input())
+    
+    # Initialize variables
+    temp = []  # List to store perfect square divisors
+    count = 0  # Variable to count valid divisors
+    
+    # Loop through all numbers from 2 to n/2
+    for i in range(2, n // 2 + 1):
+        # Check if 'i' is a divisor of 'n'
+        if n % i == 0:
+            count += 1  # Increment count since 'i' is a divisor
+            sqnum = math.sqrt(i)  # Calculate square root of 'i'
+            chksqr = int(sqnum)  # Convert the square root to an integer
+            
+            # Check if 'i' is a perfect square
+            if chksqr == sqnum:
+                count -= 1  # If 'i' is a perfect square, reduce count
+                temp.append(i)  # Store the perfect square divisor
+            else:
+                # Check if 'i' is divisible by any previously found perfect square divisors
+                for k in range(len(temp)):
+                    if i > temp[k] and len(temp) != 0:
+                        if i % temp[k] == 0:
+                            count -= 1  # If 'i' is divisible by a perfect square, reduce count
+                            break  # Exit the loop if condition met
+                    else:
+                        break  # Exit the loop if no need to check further
+                
+    # Output the count of divisors excluding perfect squares and their multiples
+    print(count)
+
+# Call the main function
+if __name__ == "__main__":
+    main()
