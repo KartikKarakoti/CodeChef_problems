@@ -1,0 +1,16 @@
+def vehicle_manufacturing():
+    t = int(input())  
+    
+    for _ in range(t):
+        v = int(input())  
+        w = int(input())  
+
+        if w % 2 != 0 or w < 2 or w < v * 2 or w > v * 4:
+            print("-1")
+        else:
+            tw = (4 * v - w) // 2  # Number of two-wheelers
+            fw = v - tw  # Number of four-wheelers
+            print(tw, fw)
+
+if __name__ == "__main__":
+    vehicle_manufacturing()
