@@ -1,0 +1,15 @@
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    num = n
+    sum_of_digits = 0
+
+    while num != 0:
+        d = num % 10
+        sum_of_digits += d
+        num = num // 10
+
+    if n % sum_of_digits == 0:
+        print("Good Number")
+    else:
+        print("Bad Number")
