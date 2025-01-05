@@ -1,0 +1,21 @@
+def find_prefix(strings):
+    strings.sort()
+    first = strings[0]
+    last = strings[-1]
+    ans = ""
+
+    for i in range(min(len(first), len(last))):
+        if first[i] != last[i]:
+            return ans if ans else "-1"
+        ans += first[i]
+
+    return ans if ans else "-1"
+
+
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        n = int(input())
+        strings = input().strip().split() 
+        result = find_prefix(strings)
+        print(result)
