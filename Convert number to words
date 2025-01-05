@@ -1,0 +1,44 @@
+def convert_num_into_word(num_str):
+    single_digit = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+    two_digits = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+    tens_multiple = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+    length = len(num_str)
+    if length == 0:
+        return
+    if length == 1:
+        print(single_digit[int(num_str[0])], end='')
+        return
+
+    i = 0
+    while i < len(num_str):
+        if length == 4:
+            if num_str[i] != '0':
+                print(single_digit[int(num_str[i])], "thousand", end=' ')
+            length -= 1
+            i += 1
+        elif length == 3:
+            if num_str[i] != '0':
+                print(single_digit[int(num_str[i])], "hundred", end=' ')
+            length -= 1
+            i += 1
+        else:
+            if num_str[i] == '1':
+                if i + 1 < len(num_str):  # Check to avoid index error
+                    print(two_digits[int(num_str[i + 1])], end='')
+                return
+            elif num_str[i] != '0':
+                print(tens_multiple[int(num_str[i])], end=' ')
+                if i + 1 < len(num_str) and num_str[i + 1] != '0':
+                    print(single_digit[int(num_str[i + 1])], end='')
+                return
+            else:
+                if i + 1 < len(num_str) and num_str[i + 1] != '0':
+                    print(single_digit[int(num_str[i + 1])], end='')
+                return
+
+t = int(input())
+for _ in range(t):
+    N = input().strip()  # Ensure no leading/trailing whitespace
+    convert_num_into_word(N)
+    print()
