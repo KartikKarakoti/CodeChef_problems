@@ -1,0 +1,21 @@
+def row_with_max_ones(matrix):
+    max_count = 0
+    row_index = -1
+    n = len(matrix)
+    m = len(matrix[0]) if n > 0 else 0
+
+    for i in range(n):
+        count = sum(1 for x in matrix[i] if x == 1)
+        if count > max_count:
+            max_count = count
+            row_index = i
+
+    return row_index
+
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+        n, m = map(int, input().split())
+        matrix = [list(map(int, input().split())) for _ in range(n)]
+        result = row_with_max_ones(matrix)
+        print(result if result != -1 else -1)
