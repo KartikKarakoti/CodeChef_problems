@@ -1,0 +1,22 @@
+def sum_of_occurrences(str1, str2):
+    freq_map = {}
+    for ch in str1:
+        freq_map[ch] = freq_map.get(ch, 0) + 1
+    unique_chars = set(str2)
+    
+    total_count = 0
+    for ch in unique_chars:
+        total_count += freq_map.get(ch, 0)
+    
+    return total_count
+
+def main():
+    t = int(input())  
+    for _ in range(t):
+        str1 = input().strip() 
+        str2 = input().strip()  
+        
+        print(sum_of_occurrences(str1, str2))
+
+if __name__ == "__main__":
+    main()
