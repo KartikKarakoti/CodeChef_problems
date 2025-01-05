@@ -1,0 +1,19 @@
+def count_divisible_pairs(arr):
+    even_count = 0
+    odd_count = 0
+    for num in arr:
+        if num % 2 == 0:
+            even_count += 1
+        else:
+            odd_count += 1
+    even_pairs = (even_count * (even_count - 1)) // 2
+    odd_pairs = (odd_count * (odd_count - 1)) // 2
+    
+    return even_pairs + odd_pairs
+
+t = int(input())
+for _ in range(t):
+    n = int(input())
+    arr = list(map(int, input().split()))
+    result = count_divisible_pairs(arr)
+    print(result)
