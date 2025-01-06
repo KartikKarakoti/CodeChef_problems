@@ -1,0 +1,47 @@
+def pairs(element_lst, n, z):
+    # Initialize a counter for valid pairs
+    count = 0
+    
+    # Loop through each element in the sorted list
+    for i in range(n):
+        a = element_lst[i]  # Current element
+        id1 = i  # Index for the left side
+        id2 = i  # Index for the right side
+        
+        # Check the first element (index 0)
+        if i == 0:
+            while id2 + 1 < n and element_lst[id2 + 1] == a:
+                id2 += 1  # Expand to the right
+            if id2 + 1 < n and (a - z) <= element_lst[id2 + 1] <= (a + z):
+                count += 1  # Valid pair found
+
+        # Check middle elements
+        elif i < n - 1:
+            while id2 + 1 < n and element_lst[id2 + 1] == a:
+                id2 += 1  # Expand to the right
+            while id1 - 1 >= 0 and element_lst[id1 - 1] == a:
+                id1 -= 1  # Expand to the left
+            
+            # Check for valid pairs on both sides
+            if ((id1 - 1 >= 0 and (a - z) <= element_lst[id1 - 1] <= (a + z)) or 
+                (id2 + 1 < n and (a - z) <= element_lst[id2 + 1] <= (a + z))):
+                count += 1  # Valid pair found
+
+        # Check the last element (index n-1)
+        else:
+            while id1 - 1 >= 0 and element_lst[id1 - 1] == a:
+                id1 -= 1  # Expand to the left
+            if id1 - 1 >= 0 and (a - z) <= element_lst[id1 - 1] <= (a + z):
+                count += 1  # Valid pair found
+
+    return count
+
+def main():
+    n, z = map(int, input().split())  # Read number of elements and z value
+    element_lst = list(map(int, input().split()))  # Read elements into a list
+    element_lst.sort()  # Sort the list
+    result = pairs(element_lst, n, z)  # Call the pairs function
+    print(result)  # Print the result
+
+if __name__ == "__main__":
+    main()  # Run the main function
