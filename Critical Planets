@@ -1,0 +1,74 @@
+from collections import defaultdict, deque
+
+# Create an adjacency list to represent the graph
+adj = defaultdict(list)
+
+# Arrays to track visited nodes, discovery time (in), and low values
+visited = [0] * 100001
+in_time = [0] * 100001
+low = [0] * 100001
+
+# Timer to assign discovery times to nodes
+timer = 0
+
+# Set to store the bridge edges
+bridge_set = set()
+
+# DFS function to explore the graph and find bridges
+def dfs(node, parent):
+    global timer
+    visited[node] = 1
+    
+    # Set discovery time and low value for the current node
+    in_time[node] = low[node] = timer
+    timer += 1
+
+    # Traverse all adjacent nodes
+    for neighbor in adj[node]:
+        # Skip the parent node to avoid going back
+        if neighbor == parent:
+            continue
+
+        # If the adjacent node is already visited
+        if visited[neighbor] == 1:
+            # Update the low value of the current node
+            low[node] = min(low[node], in_time[neighbor])
+        else:
+            # Recursively perform DFS on the unvisited adjacent node
+            dfs(neighbor, node)
+            
+            # Check if the current edge is a bridge
+            if low[neighbor] > in_time[node]:
+                bridge_set.add(node)
+                bridge_set.add(neighbor)
+
+            # Update the low value of the current node based on the adjacent node's low value
+            low[node] = min(low[node], low[neighbor])
+
+# Main function to handle input and output
+def main():
+    global adj, visited, in_time, low, bridge_set
+    
+    # Input the number of edges and vertices
+    edge, vertex = map(int, input().split())
+
+    # Read edges and build the adjacency list
+    for _ in range(edge):
+        a, b = map(int, input().split())
+        adj[a].append(b)
+        adj[b].append(a)  # Since the graph is undirected
+
+    # Start DFS from node 0, assuming no parent (-1)
+    dfs(0, -1)
+
+    # If no bridges are found, print -1
+    if len(bridge_set) == 0:
+        print(-1)
+    else:
+        # Print the bridge set in sorted increasing order
+        for i in sorted(bridge_set):
+            print(i)
+
+# Entry point for the script
+if __name__ == "__main__":
+    main()
