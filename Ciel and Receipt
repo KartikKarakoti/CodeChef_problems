@@ -1,0 +1,19 @@
+def main():
+    t = [1 << i for i in range(12)]  # t[i] denotes pow(2,i)
+
+    T = int(input())
+    assert 1 <= T <= 5
+    
+    for _ in range(T):
+        p = int(input())
+        assert 1 <= p <= 100000
+
+        res = 0
+        for i in range(11, -1, -1):
+            res += p // t[i]  # p/t[i] (floor(p/t[i])) denotes the number of nemu i which Tomya orders
+            p %= t[i]        # p decrease by used money
+
+        print(res)
+
+if __name__ == "__main__":
+    main()
