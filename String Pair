@@ -1,0 +1,93 @@
+mp = [
+    (100, "hundred"),
+    (90, "ninety"),
+    (80, "eighty"),
+    (70, "seventy"),
+    (60, "sixty"),
+    (50, "fifty"),
+    (40, "forty"),
+    (30, "thirty"),
+    (20, "twenty"),
+    (19, "nineteen"),
+    (18, "eighteen"),
+    (17, "seventeen"),
+    (16, "sixteen"),
+    (15, "fifteen"),
+    (14, "fourteen"),
+    (13, "thirteen"),
+    (12, "twelve"),
+    (11, "eleven"),
+    (10, "ten"),
+    (9, "nine"),
+    (8, "eight"),
+    (7, "seven"),
+    (6, "six"),
+    (5, "five"),
+    (4, "four"),
+    (3, "three"),
+    (2, "two"),
+    (1, "one")
+]
+
+# Function to convert a number to its English word representation
+def number_to_words(nums):
+    # Base case: if the number is zero, return "zero"
+    if nums == 0:
+        return "zero"
+    
+    # Iterate through the mapping to find the largest number less than or equal to nums
+    for val, word in mp:
+        if nums >= val:
+            b = word  # Get the word for the current number
+            c = ""
+            
+            # If there's a remainder, process it recursively
+            if nums % val != 0:
+                c = " " + number_to_words(nums % val)
+            
+            return b + c  # Return the combined string
+    return ""  # This should not be reached
+
+# Function to count pairs in the array that sum up to the vowel count D
+def string_pair(n, num):
+    D = 0  # Variable to store the count of vowels
+    
+    # Count the total number of vowels in the word representation of each number
+    for v in num:
+        s = number_to_words(v)  # Convert number to words
+        for c in s:
+            # Count vowels
+            if c in 'aeiou':
+                D += 1
+
+    # Sort the array to facilitate the pair counting
+    num.sort()
+    pair_count = 0  # Variable to store the count of valid pairs
+
+    # Count pairs that sum up to D
+    for i in range(n):
+        j = n - 1  # Start from the end of the sorted array
+        while j > i and num[i] + num[i + 1] <= D:
+            # If the pair sums to D, increment the count
+            if num[i] + num[j] == D:
+                pair_count += 1
+            j -= 1  # Move to the next element from the end
+
+    # Convert the pair count to its word representation and return it
+    return number_to_words(pair_count)
+
+# Main function to process test cases
+def main():
+    T = int(input())  # Number of test cases
+
+    # Process each test case
+    for _ in range(T):
+        N = int(input())  # Size of the array
+        num = list(map(int, input().split()))  # Read the numbers into a list
+
+        # Call the function and print the result
+        print(string_pair(N, num))  # Output the count of pairs in words
+
+# Run the main function
+if __name__ == "__main__":
+    main()
