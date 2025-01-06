@@ -1,0 +1,18 @@
+def main():
+    # your code goes here
+    n = int(input().strip())
+    # flipping the least significant bit
+    n = n ^ 1
+    # finding the position of the most significant bit
+    pos = 0
+    n1 = n
+    while n1 != 0:
+        n1 //= 2
+        pos += 1
+    pos -= 1
+    # flipping the most significant bit
+    n = n ^ (1 << pos)
+    print(n)
+
+if __name__ == "__main__":
+    main()
