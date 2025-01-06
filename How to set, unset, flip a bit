@@ -1,0 +1,15 @@
+# Python program to manipulate bits
+def main():
+    # Input from user
+    n = int(input())
+    
+    # Setting the first bit
+    n = n | (1 << 0)  # Set the first bit
+    n = n & ~(1 << 1) # Clear the second bit
+    n = n ^ (1 << 2)  # Toggle the third bit
+
+    # Output the result
+    print(n)
+
+if __name__ == "__main__":
+    main()
