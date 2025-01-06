@@ -1,0 +1,8 @@
+T = int(input())
+for _ in range(T):
+    N = int(input())
+    A = list(map(int,input().split()))
+    X = 0
+    for n in A:
+        X = X ^ n 
+    print(X)
