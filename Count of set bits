@@ -1,0 +1,20 @@
+def count_set_bits(number: int) -> int:
+    count = 0  # Initialize count of set bits
+
+    # Iterate until the number becomes 0
+    while number > 0:
+        # Increment count if the least significant bit is set
+        count += (number & 1)
+        # Right shift the number to check the next bit
+        number >>= 1
+    
+    return count  # Return the total count of set bits
+
+def main():
+    N = int(input())  # Read input number
+
+    # Call the function and print the number of set bits
+    print(count_set_bits(N))
+
+if __name__ == "__main__":
+    main()
