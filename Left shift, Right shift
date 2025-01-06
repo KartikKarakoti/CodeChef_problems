@@ -1,0 +1,13 @@
+def main():
+    # Read input values
+    N, L, R = map(int, input().split())
+    
+    # Perform right shift and then left shift
+    N = (N >> R)
+    N = (N << L)
+    
+    # Print the result
+    print(N)
+
+if __name__ == "__main__":
+    main()
