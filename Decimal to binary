@@ -1,0 +1,12 @@
+n = int(input())
+v1 = []
+
+# Converting decimal to binary representation
+while n != 0:
+    v1.append(n % 2)
+    n //= 2
+
+# Printing the binary in reverse order
+for i in reversed(v1):
+    print(i, end="")
+print()
