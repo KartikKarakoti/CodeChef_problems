@@ -1,0 +1,12 @@
+def main():
+    n = int(input())
+    lsb = n & 1
+    msb_pos = 0
+    while n != 0:
+        n //= 2
+        msb_pos += 1
+    msb_pos -= 1
+    print(msb_pos, lsb)
+
+if __name__ == "__main__":
+    main()
