@@ -1,0 +1,17 @@
+# Function to check if a string is magical
+def is_magical(s):
+    return s == s[::-1]
+
+# Input
+T = int(input())  # Number of test cases
+results = []
+
+for _ in range(T):
+    S = input().strip()
+    if is_magical(S):
+        results.append("YES")
+    else:
+        results.append("NO")
+
+# Output results
+print("\n".join(results))
