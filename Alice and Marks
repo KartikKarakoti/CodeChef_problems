@@ -1,0 +1,8 @@
+# Read input values
+X, Y = map(int, input().split())
+
+# Check if Alice is happy
+if X >= 2 * Y:
+    print("Yes")
+else:
+    print("No")
