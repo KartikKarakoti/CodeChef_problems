@@ -1,0 +1,33 @@
+# Function to encode binary string to DNA sequence
+def encode_to_dna(test_cases):
+    # Mapping from binary pairs to DNA bases
+    mapping = {"00": "A", "01": "T", "10": "C", "11": "G"}
+    results = []
+    
+    for case in test_cases:
+        n, binary_string = case
+        # Initialize the encoded DNA sequence
+        encoded_dna = ""
+        # Iterate through the binary string in steps of 2
+        for i in range(0, n, 2):
+            pair = binary_string[i:i+2]
+            encoded_dna += mapping[pair]
+        # Append the encoded result for this test case
+        results.append(encoded_dna)
+    
+    return results
+
+# Input handling
+T = int(input())  # Number of test cases
+test_cases = []
+for _ in range(T):
+    N = int(input())  # Length of binary string
+    S = input().strip()  # Binary string
+    test_cases.append((N, S))
+
+# Get the encoded DNA sequences
+output = encode_to_dna(test_cases)
+
+# Print the output for each test case
+for sequence in output:
+    print(sequence)
