@@ -1,0 +1,24 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Solution:
+    def removeDuplicates(self, head):
+        # if the list is empty or has only one node, there are no duplicates to remove
+        if head is None or head.next is None:
+            return head
+
+        current = head
+        while current.next is not None:
+            if current.data == current.next.data:
+                # Found a duplicate, remove it
+                temp = current.next
+                current.next = current.next.next
+                del temp  # free the memory of the removed node
+            else:
+                # Move to the next node
+                current = current.next
+
+        # Since the list was sorted, all duplicates would be consecutive and are removed now
+        return head
