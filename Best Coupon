@@ -1,0 +1,21 @@
+# Input number of test cases
+T = int(input())
+
+# Process each test case
+results = []
+for _ in range(T):
+    # Read the bill amount
+    X = int(input())
+    
+    # Calculate both discounts
+    discount1 = 0.10 * X
+    discount2 = 100
+    
+    # Find the maximum discount
+    max_discount = max(discount1, discount2)
+    
+    # Append the maximum discount to results
+    results.append(int(max_discount))
+
+# Output all results
+print("\n".join(map(str, results)))
