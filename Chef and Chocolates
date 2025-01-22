@@ -1,0 +1,18 @@
+# Read the number of test cases
+T = int(input())
+
+# Process each test case
+for _ in range(T):
+    # Read C, X, and Y for each test case
+    C, X, Y = map(int, input().split())
+    
+    # Calculate the number of chocolates Chef needs to buy
+    if C > X:
+        # Chef needs to buy (C - X) chocolates
+        money_needed = (C - X) * Y
+    else:
+        # No need to buy chocolates, Chef already has enough
+        money_needed = 0
+    
+    # Output the result for this test case
+    print(money_needed)
