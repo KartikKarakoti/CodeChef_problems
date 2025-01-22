@@ -1,0 +1,19 @@
+# Input number of test cases
+T = int(input())
+
+# Store results
+results = []
+
+# Process each test case
+for _ in range(T):
+    # Read inputs for the test case
+    A, B, C, X = map(int, input().split())
+    
+    # Check if any two people can contribute enough money
+    if A + B >= X or B + C >= X or A + C >= X:
+        results.append("YES")
+    else:
+        results.append("NO")
+
+# Output all results
+print("\n".join(results))
