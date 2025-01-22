@@ -1,0 +1,19 @@
+# Input number of test cases
+T = int(input())
+
+# Process each test case
+results = []
+for _ in range(T):
+    # Read inputs for the test case
+    X, Y, Z = map(int, input().split())
+    
+    # Check conditions and determine output
+    if X + Y <= Z:
+        results.append(2)  # Can afford both gym and trainer
+    elif X <= Z:
+        results.append(1)  # Can afford only the gym
+    else:
+        results.append(0)  # Cannot afford the gym
+
+# Output all results
+print("\n".join(map(str, results)))
