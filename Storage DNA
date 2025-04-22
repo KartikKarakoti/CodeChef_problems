@@ -1,0 +1,18 @@
+t = int(input())
+
+while t > 0:
+    n = int(input())
+    s = input()
+    encoded_string = ""
+    for i in range(0, n, 2):
+        pair = s[i:i+2]
+        if pair == "00":
+            encoded_string += "A"
+        elif pair == "01":
+            encoded_string += "T"
+        elif pair == "10":
+            encoded_string += "C"
+        elif pair == "11":
+            encoded_string += "G"
+    print(encoded_string)
+    t -= 1
