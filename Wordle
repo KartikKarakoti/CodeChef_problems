@@ -1,0 +1,12 @@
+te= int(input())
+while te>0:
+    s= input()
+    t= input()
+    res=""
+    for i in range(0, len(s)):
+        if(s[i]==t[i]):
+            res+="G"
+        else:
+            res+="B"
+    print(res)
+    te-=1
